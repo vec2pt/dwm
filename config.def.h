@@ -75,22 +75,13 @@ static const Layout layouts[] = {
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
-#include <X11/XF86keysym.h>
-static const char *up_vol[]   = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "+10%",   NULL };
-static const char *down_vol[] = { "pactl", "set-sink-volume", "@DEFAULT_SINK@", "-10%",   NULL };
-static const char *mute_vol[] = { "pactl", "set-sink-mute",   "@DEFAULT_SINK@", "toggle", NULL };
-static const char *mute_mic[] = { "pactl", "set-source-mute",   "@DEFAULT_SOURCE@", "toggle", NULL };
-static const char *brighter[] = { "brightnessctl", "set", "10%+", NULL };
-static const char *dimmer[]   = { "brightnessctl", "set", "10%-", NULL };
-static const char *play[]   = { "playerctl", "play-pause", NULL };
-static const char *stop[]   = { "playerctl", "stop", NULL };
-
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "st", NULL };
 
 #include "movestack.c"
+#include <X11/XF86keysym.h>
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
@@ -146,14 +137,15 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
-	{ 0,    XF86XK_AudioMute,                  spawn,          {.v = mute_vol } },
-	{ 0,    XF86XK_AudioLowerVolume,           spawn,          {.v = down_vol } },
-	{ 0,    XF86XK_AudioRaiseVolume,           spawn,          {.v = up_vol } },
-	{ 0,    XF86XK_AudioMicMute,               spawn,          {.v = mute_mic } },
-	{ 0,    XF86XK_MonBrightnessDown,          spawn,          {.v = dimmer } },
-	{ 0,    XF86XK_MonBrightnessUp,            spawn,          {.v = brighter } },
-	{ 0,    XF86XK_AudioPlay,                  spawn,          {.v = play } },
-	{ 0,    XF86XK_AudioStop,                  spawn,          {.v = stop } }
+	{ 0,    XF86XK_AudioMute,                  spawn,          SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle") },
+	{ 0,    XF86XK_AudioLowerVolume,           spawn,          SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -10%") },
+	{ 0,    XF86XK_AudioRaiseVolume,           spawn,          SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +10%") },
+	{ 0,    XF86XK_AudioMicMute,               spawn,          SHCMD("pactl set-source-mute @DEFAULT_SOURCE@ toggle") },
+	{ 0,    XF86XK_MonBrightnessDown,          spawn,          SHCMD("brightnessctl set 10%-") },
+	{ 0,    XF86XK_MonBrightnessUp,            spawn,          SHCMD("brightnessctl set 10%+") },
+	{ 0,    XF86XK_AudioPlay,                  spawn,          SHCMD("playerctl play-pause") },
+	{ 0,    XF86XK_AudioStop,                  spawn,          SHCMD("playerctl stop") },
+	{ 0,    XF86XK_Display,                    spawn,          SHCMD("xrandr --auto") }
 };
 
 /* button definitions */
