@@ -144,7 +144,10 @@ static const Key keys[] = {
 	{ 0,    XF86XK_MonBrightnessDown,          spawn,          SHCMD("brightnessctl set 10%-") },
 	{ 0,    XF86XK_MonBrightnessUp,            spawn,          SHCMD("brightnessctl set 10%+") },
 	{ 0,    XF86XK_AudioPlay,                  spawn,          SHCMD("playerctl play-pause") },
+	{ 0,    XF86XK_AudioPause,                 spawn,          SHCMD("playerctl play-pause") },
 	{ 0,    XF86XK_AudioStop,                  spawn,          SHCMD("playerctl stop") },
+	{ 0,    XF86XK_AudioNext,                  spawn,          SHCMD("playerctl next") },
+	{ 0,    XF86XK_AudioPrev,                  spawn,          SHCMD("playerctl previous") },
 	{ 0,    XF86XK_Display,                    spawn,          SHCMD("xrandr --auto") }
 };
 

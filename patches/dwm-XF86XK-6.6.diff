@@ -1,6 +1,6 @@
 diff '--color=auto' -u -N dwm-6.6/config.def.h dwm-6.6-mod/config.def.h
 --- dwm-6.6/config.def.h	2025-08-09 15:00:55.740267680 +0200
-+++ dwm-6.6-mod/config.def.h	2025-08-31 16:54:02.986878031 +0200
++++ dwm-6.6-mod/config.def.h	2025-09-06 19:20:15.885818674 +0200
 @@ -60,6 +60,7 @@
  static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
  static const char *termcmd[]  = { "st", NULL };
@@ -9,7 +9,7 @@ diff '--color=auto' -u -N dwm-6.6/config.def.h dwm-6.6-mod/config.def.h
  static const Key keys[] = {
  	/* modifier                     key        function        argument */
  	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
-@@ -95,6 +96,15 @@
+@@ -95,6 +96,18 @@
  	TAGKEYS(                        XK_8,                      7)
  	TAGKEYS(                        XK_9,                      8)
  	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
@@ -20,12 +20,15 @@ diff '--color=auto' -u -N dwm-6.6/config.def.h dwm-6.6-mod/config.def.h
 +	{ 0,    XF86XK_MonBrightnessDown,          spawn,          SHCMD("brightnessctl set 10%-") },
 +	{ 0,    XF86XK_MonBrightnessUp,            spawn,          SHCMD("brightnessctl set 10%+") },
 +	{ 0,    XF86XK_AudioPlay,                  spawn,          SHCMD("playerctl play-pause") },
++	{ 0,    XF86XK_AudioPause,                 spawn,          SHCMD("playerctl play-pause") },
 +	{ 0,    XF86XK_AudioStop,                  spawn,          SHCMD("playerctl stop") },
++	{ 0,    XF86XK_AudioNext,                  spawn,          SHCMD("playerctl next") },
++	{ 0,    XF86XK_AudioPrev,                  spawn,          SHCMD("playerctl previous") },
 +	{ 0,    XF86XK_Display,                    spawn,          SHCMD("xrandr --auto") }
  };
  
  /* button definitions */
-@@ -113,4 +123,3 @@
+@@ -113,4 +126,3 @@
  	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
  	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
  };

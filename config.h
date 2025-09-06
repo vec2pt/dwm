@@ -130,7 +130,7 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_7,                      6)
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
-	{ MODKEY|ControlMask|ShiftMask, XK_q,      quit,           {0} },
+	{ MODKEY|ShiftMask,             XK_e,      quit,           {0} },
 	{ 0,    XF86XK_AudioMute,                  spawn,          SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle") },
 	{ 0,    XF86XK_AudioLowerVolume,           spawn,          SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -10%") },
 	{ 0,    XF86XK_AudioRaiseVolume,           spawn,          SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +10%") },
@@ -138,7 +138,10 @@ static const Key keys[] = {
 	{ 0,    XF86XK_MonBrightnessDown,          spawn,          SHCMD("brightnessctl set 10%-") },
 	{ 0,    XF86XK_MonBrightnessUp,            spawn,          SHCMD("brightnessctl set 10%+") },
 	{ 0,    XF86XK_AudioPlay,                  spawn,          SHCMD("playerctl play-pause") },
+	{ 0,    XF86XK_AudioPause,                 spawn,          SHCMD("playerctl play-pause") },
 	{ 0,    XF86XK_AudioStop,                  spawn,          SHCMD("playerctl stop") },
+	{ 0,    XF86XK_AudioNext,                  spawn,          SHCMD("playerctl next") },
+	{ 0,    XF86XK_AudioPrev,                  spawn,          SHCMD("playerctl previous") },
 	{ 0,    XF86XK_Display,                    spawn,          SHCMD("xrandr --auto") }
 };
 
