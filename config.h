@@ -89,7 +89,8 @@ static const char *termcmd[]  = { "st", NULL };
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_r,      spawn,          {.v = dmenucmd } },
-	{ MODKEY,                       XK_s,      spawn,          SHCMD("rofi -show drun") },
+	// { MODKEY,                       XK_s,      spawn,          SHCMD("rofi -show drun") },
+	{ MODKEY,                       XK_s,      spawn,          SHCMD("~/.local/bin/dmenu_drun -i") },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
 	// { MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_b,      spawn,          SHCMD("librewolf --new-tab duckduckgo.com") },
