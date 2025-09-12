@@ -1,6 +1,6 @@
-diff '--color=auto' -u -N dwm-6.6/config.def.h dwm-6.6-mod/config.def.h
+diff '--color=auto' -u dwm-6.6/config.def.h dwm-6.6-mod/config.def.h
 --- dwm-6.6/config.def.h	2025-08-09 15:00:55.740267680 +0200
-+++ dwm-6.6-mod/config.def.h	2025-09-06 19:20:15.885818674 +0200
++++ dwm-6.6-mod/config.def.h	2025-09-13 00:44:44.667015593 +0200
 @@ -60,6 +60,7 @@
  static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
  static const char *termcmd[]  = { "st", NULL };
@@ -13,10 +13,10 @@ diff '--color=auto' -u -N dwm-6.6/config.def.h dwm-6.6-mod/config.def.h
  	TAGKEYS(                        XK_8,                      7)
  	TAGKEYS(                        XK_9,                      8)
  	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
-+	{ 0,    XF86XK_AudioMute,                  spawn,          SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle") },
-+	{ 0,    XF86XK_AudioLowerVolume,           spawn,          SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -10%") },
-+	{ 0,    XF86XK_AudioRaiseVolume,           spawn,          SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +10%") },
-+	{ 0,    XF86XK_AudioMicMute,               spawn,          SHCMD("pactl set-source-mute @DEFAULT_SOURCE@ toggle") },
++	{ 0,    XF86XK_AudioRaiseVolume,           spawn,          SHCMD("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+") },
++	{ 0,    XF86XK_AudioLowerVolume,           spawn,          SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-") },
++	{ 0,    XF86XK_AudioMute,                  spawn,          SHCMD("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle") },
++	{ 0,    XF86XK_AudioMicMute,               spawn,          SHCMD("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle") },
 +	{ 0,    XF86XK_MonBrightnessDown,          spawn,          SHCMD("brightnessctl set 10%-") },
 +	{ 0,    XF86XK_MonBrightnessUp,            spawn,          SHCMD("brightnessctl set 10%+") },
 +	{ 0,    XF86XK_AudioPlay,                  spawn,          SHCMD("playerctl play-pause") },

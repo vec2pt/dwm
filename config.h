@@ -132,10 +132,10 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_e,      quit,           {0} },
-	{ 0,    XF86XK_AudioMute,                  spawn,          SHCMD("pactl set-sink-mute @DEFAULT_SINK@ toggle") },
-	{ 0,    XF86XK_AudioLowerVolume,           spawn,          SHCMD("pactl set-sink-volume @DEFAULT_SINK@ -10%") },
-	{ 0,    XF86XK_AudioRaiseVolume,           spawn,          SHCMD("pactl set-sink-volume @DEFAULT_SINK@ +10%") },
-	{ 0,    XF86XK_AudioMicMute,               spawn,          SHCMD("pactl set-source-mute @DEFAULT_SOURCE@ toggle") },
+	{ 0,    XF86XK_AudioRaiseVolume,           spawn,          SHCMD("wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+") },
+	{ 0,    XF86XK_AudioLowerVolume,           spawn,          SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-") },
+	{ 0,    XF86XK_AudioMute,                  spawn,          SHCMD("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle") },
+	{ 0,    XF86XK_AudioMicMute,               spawn,          SHCMD("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle") },
 	{ 0,    XF86XK_MonBrightnessDown,          spawn,          SHCMD("brightnessctl set 10%-") },
 	{ 0,    XF86XK_MonBrightnessUp,            spawn,          SHCMD("brightnessctl set 10%+") },
 	{ 0,    XF86XK_AudioPlay,                  spawn,          SHCMD("playerctl play-pause") },
