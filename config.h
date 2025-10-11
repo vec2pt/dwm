@@ -11,8 +11,8 @@ static       int smartgaps          = 1;        /* 1 means no outer gap when the
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = {
-	"Hack:style=Regular:size=10:antialias=true:autohint=true",
 	"Hack Nerd Font:style=Regular:size=10:antialias=true:autohint=true",
+	"Hack:style=Regular:size=10:antialias=true:autohint=true",
 	"Noto Color Emoji:pixelsize=10:antialias=true:autohint=true",
 	"Symbols Nerd Font:pixelsize=10:antialias=true:autohint=true",
 };
